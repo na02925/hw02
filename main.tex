@@ -5,6 +5,9 @@
 
 
 \documentclass[addpoints]{exam}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 % Header and footer.
 \pagestyle{headandfoot}
@@ -19,7 +22,7 @@
 \usepackage[table]{xcolor}
 \usepackage{amsfonts,graphicx,amsmath,hyperref}
 \title{Habib University\\CS-113 Discrete Mathematics\\Spring 2018\\HW 2}
-\author{$<your ID>$}  % replace with your ID, e.g. oy02945
+\author{$<na02925>$}  % replace with your ID, e.g. oy02945
 \date{Due: 19h, 16th February, 2018}
 
 
@@ -49,23 +52,47 @@
 
   \begin{solution}
     % Write your solution here
+    \\
+    \begin{subparts}
+  	\subpart Partial
+     The function is called partial function when all the values in domain do not have defined codomain. In this case, the codmain of the function is the square root of domain. Consider that the domain of function is positive and negative integers including zero and the codmain consists of real numbers. The function is defined for the domain consisting for zero and positive integers. However, negative integer values in the domain, there is no image or function has no defined codomain. Hence this function is partial function. 
+    \newline
+    $domain = \mathbb{Z}$  \newline
+    $codmain = \mathbb{R}$  
+     \subpart Total
+    The function is called total function when all the values in domain has defined value in the codomain. To make this function total function, lets consider that the domain is consists of Natural numbers including zero and the codomain consists of Real numbers. Then all the values in the domain will have defined values in the codomain. Hence the resulting function is Total function.
+    $domain = \mathbb{Z}$  \newline
+    $codmain = \mathbb{R}$  \newline
+   \end{subparts}
   \end{solution}
   
   \part[5] Explain whether $f$ is a function from the set of all bit strings to the set of integers if $f(S)$ is the smallest $i \in \mathbb{Z}$� such that the $i$th bit of S is 1 and $f(S) = 0$ when S is the empty string. 
   
   \begin{solution}
     % Write your solution here
+    A relation is called function when all the values in the set of domain has defined a image or value in the codomain. In this case, the domain is set of bit strings and the codomain is the set of integers. Every bit string whose ith bit is 1 has defined image or value in the codomain. However for the bit string consisting of only Os, the ith bit of S is not 1, hence there will be no image or defined value in the codomain. Hence, it can be concluded that this is not a function. 
+
+    
   \end{solution}
 
   \part[15] For $X,Y \in S$, explain why (or why not) the following define an equivalence relation on $S$:
   \begin{subparts}
-    \subpart ``$X$ and $Y$ have been in class together"
+    \subpart ``$X$ and $Y$ have been in class together" 
     \subpart ``$X$ and $Y$ rhyme"
     \subpart ``$X$ is a subset of $Y$"
   \end{subparts}
 
   \begin{solution}
     % Write your solution here
+    For a relation to be an equivalence relation, it must be Symmetric, Reflexive, and Transitive. 
+    \begin{subparts}
+    \subpart ``$X$ and $Y$ have been in class together" \\
+    Since it is the case that the X is in his own class, this relation is Reflexive. Consider that X is in Y's class then Y must also be in X's class. So, this relation is also Symmetric. Now checking for Transitivity. If there is a third person W and  $W \epsilon S$. Consider X is in W's class and W is in Y's class, then we can not say if X is in Y's class or not. Since all three conditions are not satisfied, it is not equivalence relation. 
+    \subpart ``$X$ and $Y$ rhyme" \\
+    If X rhymes, then Y must also rhyme. This means it is Symmetric. It is also Reflexive since X and Y rhyme. If W also exists such that $W \epsilon S$. If X rhymes Z and Z rhymes Y, then X rhymes Y always. So, it is also Transitive. Since all three conditions satisfies, it is equivalence relation.  
+    \subpart ``$X$ is a subset of $Y$" \\
+    It is Reflexive since a set is always subset of itself. However it is Non-Symmetric. Let's say X is a set {4,5,6} and Y is a set {4, 5, 6, 7}. It can be said that X is subset of Y but elements in Y are more than X. So Y is not subset of X. In this case, there is a Non-Symmetric relations, which means it is not Equivalence Relation.
+  \end{subparts}
   \end{solution}
 
 \end{parts}
@@ -74,6 +101,15 @@
 \question[15] Let $A = f^{-1}(B)$. Prove that $f(A) \subseteq B$.
   \begin{solution}
     % Write your solution here
+    Here $A = f^{-1}(B)$. Suppose that X and Y are two sets and $f: X \rightarrow Y$. $f(A) \subseteq B$ for each $B \epsilon P(Y)$. \\
+    $f(A) = \{y \epsilon Y : \exists x \epsilon A [f(x) =y] \}$ \\
+    $f(A) = \{ y \epsilon Y : \exists x \epsilon \{ z \epsilon X : f(z) \epsilon B \} [f(x) = y] \} $\\
+    $f(A) = \{ y \epsilon Y : \exists x \epsilon X [f(x) = y \wedge f(x) \epsilon B ] \} $ \\
+    $f(A) = B $\\
+    Therefore, it can be said that \\
+      $f(A) \subseteq B$.
+    
+    
   \end{solution}
 
 \question[15] Consider $[n] = \{1,2,3,...,n\}$ where $n \in \mathbb{N}$. Let $A$ be the set of subsets of $[n]$ that have even size, and let $B$ be the set of subsets of $[n]$ that have odd size. Establish a bijection from $A$ to $B$, thereby proving $|A| = |B|$. (Such a bijection is suggested below for $n = 3$) 
@@ -89,6 +125,19 @@
 
   \begin{solution}
     % Write your solution here
+    In this question, it is asked to map the two sets A and B as mentioned in the question above. The subset maps to itself minus \{n \} or to itself union \{ n \}. \\
+    To prove that there is bijection from A to B, A and B must be surjective and injective. \\
+    Firstly proving that wether the function is injective or not \\
+    Suppose there are two subsets $A_{m}$ and $A_{n}$ such that $f(A_{m}) = f(A_{n})$. \\
+    $A_{m} - \{ n \} = f(A_{m})= f(A_{n}) = A_{n} - \{ n \}$ \\
+    Similarl,y for union (n) case \\
+    $A_{m} \cup \{ n \} = f(A_{m})= f(A_{n}) = A_{n} \cup \{ n \}$ \\
+    This proves that function is injective. \\
+    Now, proving wether the function is Surjective or not \\
+    Support that B is an element ofof the range of function f. If B is a subset of odd size and contains $n$ then $\{B\} - \{n\} $ is even size subset mapping to B. $BB \cup \{ n \}$ is subset of even size mapping to B if B don't contain n. As every value in the domain has defined value in the codomain, the funtion f is surjective. \\
+    Since funtion is both Sujective and Injective, it can be concluded that the function is Bijective from A to B.
+    
+    
   \end{solution}
   
 \question Mushrooms play a vital role in the biosphere of our planet. They also have recreational uses, such as in understanding the mathematical series below. A mushroom number, $M_n$, is a figurate number that can be represented in the form of a mushroom shaped grid of points, such that the number of points is the mushroom number. A mushroom consists of a stem and cap, while its height is the combined height of the two parts. Here is $M_5=23$:
@@ -122,10 +171,43 @@ Study the first five mushrooms carefully and make sure you can draw subsequent o
     \part[15] Derive a closed-form for $M_n$ in terms of $n$.
   \begin{solution}
     % Write your solution here
+    Suppose that n initializes at n = 0 and considering the recurrence relation of the first five mushrooms. \\
+    
+
+\begin{center}
+ \begin{tabular}{|| c| c| c| c| c| c||} 
+ \hline
+   & $M_{1}$ (n = 0 )& $M_{2}$( n = 1) & $M_{3}$ (n = 2 )& $M_{4} (n = 3)$ & $M_{5} (n = 4)$ \\ [0.5ex] 
+ \hline\hline
+ Stem Height & 0 & 1 & 2 & 3 & 4\\ 
+ \hline
+ Cap Height & 1  & 2 & 2 & 3 & 3   \\
+ \hline
+ Cap Width & 2 & 3 & 4 & 5 & 6\\
+ \hline
+ Total Height & 2 & 7 & 11 & 18 & 23 \\
+  
+ \hline
+\end{tabular}
+\end{center}
+It can be seen that there is pattern in the table. Using that pattern the next value for Cap Width, Cap Height, Stem Height and Total Height can be predicted. \\
+Considering the base case as n=1 instead of n = 0, \\
+$Stem Height = n - 1 $ \\
+$Cap Height =  \floor*{\frac{x}{2}} + 1$\\
+$ Cap Width = n + 1 $ \\
+$Total Number of Dots = \sum_{i=1}^{\floor*{\frac{x}{2}} } [(n+1) - i] +2(n-1)$
+
   \end{solution}
     \part[5] What is the total height of the $20$th mushroom in the series? 
   \begin{solution}
     % Write your solution here
+    The total height of the 20th mushroom in the series can be found by using the formulas in part (a) \\
+    In this question n = 20 \\
+    Cap Width = n + 1 = 21 \\
+    Stem Height = n - 1 = 19 \\
+    Cap Height = $\floor*{\frac{x}{2}} + 1$ = 11\\
+    Total Height of nth Mushroom = Cap Height + Stem Height \\
+Total Height of 20th Mushroom = 30 \\
   \end{solution}
 \end{parts}
 
@@ -154,11 +236,16 @@ The \href{http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibGen.ht
  
     \begin{solution}
     % Write your solution here
-  \end{solution}
+    Fibonacci series can be mapped with Natural numbers which will result in one to one and onto correspondence from fabonacci series to Natural numbers. This means there is bijection between Fabonacci series and set of Natural numbers. \\
+    Fabonaccie series can be mapped to Natural numbers as bijective as follow:\\
+    F = 1 1 2 3 5 8 13... \\
+    $\mathbb{Z}$ = 0 1 2 3 4 5 6...  
+    \end{solution}
   \part[15] Consider the Modified Wythoff as any array derived from the original, where each entry of the leading diagonal (marked in blue) of the original 2D-Array is replaced with an integer that does not occur in that row. Prove that the Modified Wythoff Array is countable. 
 
   \begin{solution}
     % Write your solution here
+    
   \end{solution}
 \end{parts}
 
